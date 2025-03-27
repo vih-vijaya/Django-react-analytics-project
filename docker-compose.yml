@@ -1,0 +1,66 @@
+
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8001:8000"
+    environment:
+      - DEBUG=True
+    env_file:
+      - .env
+
+  frontend:
+    build: ./analyticspro
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+
+# ===============================
+# docker-compose.yml
+# ===============================
+
+# version: '3.9'
+
+# services:
+#   db:
+#     image: mysql:8.0
+#     ports:
+#       - "3307:3306"  # host_port:container_port
+#     environment:
+#       MYSQL_DATABASE: ${MYSQL_DATABASE}
+#       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+#     volumes:
+#       - mysql_data:/var/lib/mysql
+
+#   backend:
+#     build:
+#       context: ./backend
+#       dockerfile: Dockerfile
+#     volumes:
+#       - ./backend:/app
+#     ports:
+#       - "8001:8000"
+#     depends_on:
+#       - db
+#     env_file:
+#       - .env
+#     environment:
+#       - MYSQL_DATABASE=${MYSQL_DATABASE}
+#       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+#       - MYSQL_HOST=localhost
+
+#   frontend:
+#     build: ./analyticspro
+#     ports:
+#       - "3001:80"
+#     depends_on:
+#       - backend
+
+# volumes:
+#   mysql_data:

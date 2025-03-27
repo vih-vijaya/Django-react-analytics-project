@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+
+# Envs
+env/
+venv/
+.env
+
+# Node
+node_modules/
+dist/
+build/
+
+# VSCode / Logs
+.vscode/
+*.log
+*.pid
+*.coverage
+
+# Docker
+*.pid
+*.tar
+*.lock
+
+# OS
+.DS_Store
+Thumbs.db
